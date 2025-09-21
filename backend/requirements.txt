@@ -2,3 +2,4 @@ transformers
 diffusers
 torch
 pydantic
+boto3
