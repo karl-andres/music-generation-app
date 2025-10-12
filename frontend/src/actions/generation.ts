@@ -50,6 +50,7 @@ export async function queueSong(generateRequest: GenerateRequest, guidanceScale:
             title: title,
             prompt: generateRequest.prompt,
             lyrics: generateRequest.lyrics,
+            describedLyrics: generateRequest.describedLyrics,
             fullDescribedSong: generateRequest.fullDescribedSong,
             instrumental: generateRequest.instrumental,
             guidanceScale: guidanceScale,
@@ -64,6 +65,40 @@ export async function queueSong(generateRequest: GenerateRequest, guidanceScale:
             userId: song.userId
         }
     })
+}
+
+export async function getPlayUrl(songId: string) {
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    })
+
+    if (!session) redirect("auth/sign-in");
+
+    const song = await db.song.findUnique({
+        where: {
+            id: songId,
+            OR: [{ userId: session.user.id }, { published: true }],
+            s3Key: {
+                not: null
+            }
+        },
+        select: {
+            s3Key: true,
+        },
+    })
+
+    await db.song.update({
+        where: {
+            id: songId
+        },
+        data: {
+            listenCount: {
+                increment: 1
+            }
+        },
+    })
+
+    return await getPresignedUrl(song.s3Key!);
 }
 
 export async function getPresignedUrl(key: string) {

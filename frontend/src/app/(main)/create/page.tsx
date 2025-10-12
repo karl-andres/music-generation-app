@@ -1,12 +1,10 @@
-import Link from "next/link";
+import { Loader2 } from "lucide-react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { auth } from "~/lib/auth";
-import CreateSong from "~/components/create";
-import { SongPanel } from "~/components/create/song-panel";
 import { Suspense } from "react";
+import { SongPanel } from "~/components/create/song-panel";
 import TrackListFetcher from "~/components/create/track-list-fetcher";
-import { Loader2 } from "lucide-react";
+import { auth } from "~/lib/auth";
 
 export default async function CreatePage() {
   const session = await auth.api.getSession({

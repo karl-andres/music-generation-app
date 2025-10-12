@@ -253,8 +253,8 @@ def main():
     endpoint_url = server.generate_with_described_lyrics.get_web_url()
 
     request_data = GenerateWithDescribedLyricsRequest(
-        prompt="Acid Jazz, Persona 5",
-        described_lyrics="lyrics about phantom troupe",
+        prompt="central cee type beat",
+        described_lyrics="O canada lyrics",
         guidance_scale=15
     )
 
