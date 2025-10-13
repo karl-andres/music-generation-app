@@ -7,7 +7,7 @@ import { env } from "~/env";
 
 const polarClient = new Polar({
     accessToken: env.POLAR_ACCESS_TOKEN,
-    server: 'sandbox'
+    server: 'production'
 });
 
 const prisma = db
