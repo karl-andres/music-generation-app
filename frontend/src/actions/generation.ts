@@ -97,7 +97,10 @@ export async function getPlayUrl(songId: string) {
             }
         },
     })
-
+    if (!song) {
+        throw new Error("Song not found or access denied");
+    }
+    
     return await getPresignedUrl(song.s3Key!);
 }
 
