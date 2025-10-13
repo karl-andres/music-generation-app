@@ -1,4 +1,4 @@
-# Music Generation App
+# Music Generation App (Musica)
 
 An AI-powered platform that transforms user prompts into **original music and thumbnails**, built with modern full-stack and AI infrastructure.
 
