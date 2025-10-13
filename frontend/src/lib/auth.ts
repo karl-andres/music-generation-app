@@ -7,7 +7,7 @@ import { env } from "~/env";
 
 const polarClient = new Polar({
     accessToken: env.POLAR_ACCESS_TOKEN,
-    server: 'production'
+    server: 'production',
 });
 
 const prisma = db
@@ -26,15 +26,15 @@ export const auth = betterAuth({
                 checkout({
                     products: [
                         {
-                            productId: "db57bf53-3858-4ebd-8d11-74134380af46", // ID of Product from Polar Dashboard
+                            productId: "a2e1beaf-d11c-489c-a255-fef4fb6de82b", // ID of Product from Polar Dashboard
                             slug: "small" // Custom slug for easy reference in Checkout URL, e.g. /checkout/pro
                         },
                         {
-                            productId: "c0e47337-c574-4cb0-a5c0-afa5af91d4e2", // ID of Product from Polar Dashboard
+                            productId: "041c024d-aae7-42f5-8a0f-fab77e69e786", // ID of Product from Polar Dashboard
                             slug: "medium" // Custom slug for easy reference in Checkout URL, e.g. /checkout/pro
                         },
                         {
-                            productId: "36046c5f-1ac6-4639-af91-a76bd740656d", // ID of Product from Polar Dashboard
+                            productId: "72ce786b-77a6-4966-9619-29bd1dcd8fea", // ID of Product from Polar Dashboard
                             slug: "large" // Custom slug for easy reference in Checkout URL, e.g. /checkout/pro
                         }
                     ],
@@ -57,13 +57,13 @@ export const auth = betterAuth({
                         let creditsToAdd = 0;
 
                         switch (productId) {
-                            case "db57bf53-3858-4ebd-8d11-74134380af46":
+                            case "a2e1beaf-d11c-489c-a255-fef4fb6de82b":
                                 creditsToAdd = 10;
                                 break;
-                            case "c0e47337-c574-4cb0-a5c0-afa5af91d4e2":
+                            case "041c024d-aae7-42f5-8a0f-fab77e69e786":
                                 creditsToAdd = 25;
                                 break;
-                            case "36046c5f-1ac6-4639-af91-a76bd740656d":
+                            case "72ce786b-77a6-4966-9619-29bd1dcd8fea":
                                 creditsToAdd = 50;
                                 break;
                         }
